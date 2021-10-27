@@ -14,7 +14,7 @@ Menampilkan data dummy dari database. <b>Halaman ini dapat dilihat setelah login
 
 ### Mission 12: Hosting Website
 
-https://ryanfernaldy.infinityfreeapp.com/
+http://ryanfernaldy.infinityfreeapp.com/
 
 Untuk login<br>
 username: `admin@admin.com`<br>
