@@ -1,9 +1,19 @@
 <?php
+require_once('database.php');
 session_start();
 if (!isset($_SESSION['email'])) {
     header('Location:login.php');
 }
 date_default_timezone_set("Asia/Jakarta");
+
+$query = "SELECT description, COUNT(*) as 'count' FROM item i, reason r WHERE i.reason_id=r.id  GROUP BY r.id;";
+$data = query($query);
+$labels = [];
+$counts = [];
+foreach ($data as $i) {
+    $labels[] = $i['description'];
+    $counts[] = $i['count'];
+}
 ?>
 
 <!doctype html>
@@ -28,7 +38,7 @@ date_default_timezone_set("Asia/Jakarta");
             </div>
 
             <div class="col-md-7">
-                <h3>Grafik</h3>
+                <h3>Grafik Jumlah Reason</h3>
             </div>
 
             <div class="col-md-3 text-right px-0">
@@ -63,10 +73,14 @@ date_default_timezone_set("Asia/Jakarta");
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16'],
+                labels: [<?php foreach ($labels as $label) {
+                                echo "\"" . $label . "\"" . ",";
+                            } ?>],
                 datasets: [{
                     label: '# of Votes',
-                    data: [2, 3, 4, 1, 2, 5, 6, 7, 1, 1, 1, 2, 3, 2, 1, 9],
+                    data: [<?php foreach ($counts as $count) {
+                                echo $count . ",";
+                            } ?>],
                     backgroundColor: 'rgba(0, 0, 255, 1.0)',
                     borderWidth: 1
                 }]

@@ -6,11 +6,11 @@ Sisi FrontEnd dibuat dengan Bootstrap v4.6. Sisi BackEnd dibuat dengan PHP (aute
 
 ### Mission 10: Halaman Tabel dan Grafik Responsif
 
-Untuk sisi FrontEnd juga dibuat dengan Bootstrap v 4.6. Untuk grafik menggunakan ChartJS. <b>Halaman ini dapat dilihat setelah login.</b>
+Untuk sisi FrontEnd juga dibuat dengan Bootstrap v 4.6. Untuk grafik menggunakan ChartJS. Data diambil dari database. <b>Halaman ini dapat dilihat setelah login.</b>
 
 ### Mission 11: Menampilkan Data dari Database
 
-Menampilkan data dummy dari database. <b>Halaman ini dapat dilihat setelah login.</b>
+Menampilkan data dummy dari database pada halaman tabel dan grafik.
 
 ### Mission 12: Hosting Website
 

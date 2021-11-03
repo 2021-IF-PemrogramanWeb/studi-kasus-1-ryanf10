@@ -28,7 +28,6 @@ if (!isset($_SESSION['email'])) {
             <div class="card-body">
                 <a href="tabel.php" class="btn btn-primary">Tabel</a>
                 <a href="grafik.php" class="btn btn-warning">Grafik</a>
-                <a href="barang.php" class="btn btn-info">Barang</a>
             </div>
         </div>
 

@@ -1,9 +1,15 @@
 <?php
+require_once('database.php');
+
 session_start();
 if (!isset($_SESSION['email'])) {
     header('Location:login.php');
 }
 date_default_timezone_set("Asia/Jakarta");
+
+$query = "SELECT * FROM reason;";
+$reasons = query($query);
+
 ?>
 
 <!doctype html>
@@ -28,7 +34,7 @@ date_default_timezone_set("Asia/Jakarta");
             </div>
 
             <div class="col-md-7">
-                <h3>Tabel Siswa</h3>
+                <h3>Tabel Reason</h3>
             </div>
 
             <div class="col-md-3 text-right x-0">
@@ -51,30 +57,16 @@ date_default_timezone_set("Asia/Jakarta");
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Nama</th>
-                            <th scope="col">Asal</th>
-                            <th scope="col">Tanggal Lahir</th>
+                            <th scope="col">Description</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Markus</td>
-                            <td>Surabaya</td>
-                            <td>21 Oktober 2002</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Junaidi</td>
-                            <td>Sidoarjo</td>
-                            <td>18 Juli 2000</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Sunaryo</td>
-                            <td>Ponorogo</td>
-                            <td>26 September 2004</td>
-                        </tr>
+                        <?php foreach ($reasons as $reason) : ?>
+                            <tr>
+                                <th scope="row"><?= $reason['id']; ?></th>
+                                <td><?= $reason['description']; ?></td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
