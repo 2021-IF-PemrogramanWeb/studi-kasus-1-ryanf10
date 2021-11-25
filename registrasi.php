@@ -1,5 +1,5 @@
 <?php
-require_once('login_action.php');
+require_once('register_action.php');
 session_set_cookie_params(0);
 session_start();
 
@@ -21,12 +21,14 @@ if (isset($_SESSION['email'])) {
     header('Location:home.php');
 }
 
-if (isset($_POST['login'])) {
-    if (login() <= 0) {
+if (isset($_POST['register'])) {
+    if (registrasi() <= 0) {
         echo "<script>
-            alert('Login Gagal');
+            alert('Registrasi Gagal');
         </script>
         ";
+    } else {
+        header('Location:login.php');
     }
 }
 ?>
@@ -41,7 +43,7 @@ if (isset($_POST['login'])) {
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
-    <title>Halaman Login</title>
+    <title>Halaman Registrasi</title>
 </head>
 
 <body>
@@ -50,7 +52,7 @@ if (isset($_POST['login'])) {
             <div class="col-md-5">
                 <div class="card">
                     <div class="card-header text-center">
-                        Login
+                        Registrasi
                     </div>
                     <div class="card-body">
                         <form method="POST" action="">
@@ -62,14 +64,8 @@ if (isset($_POST['login'])) {
                                 <label for="exampleInputPassword1">Password</label>
                                 <input type="password" class="form-control" id="exampleInputPassword1" name="password">
                             </div>
-
-                            <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1" name="remember_me">
-                                <label class="form-check-label" for="exampleCheck1">Remember me</label>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-block" name="login">Login</button>
+                            <button type="submit" class="btn btn-primary btn-block" name="register">Register</button>
                         </form>
-                        <a href="registrasi.php">Belum punya akun? Silahkan registrasi</a>
                     </div>
                 </div>
 
