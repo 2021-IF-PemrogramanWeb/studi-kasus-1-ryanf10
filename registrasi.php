@@ -1,6 +1,5 @@
 <?php
 require_once('register_action.php');
-session_set_cookie_params(0);
 session_start();
 
 if (isset($_COOKIE['id']) && isset($_COOKIE['key'])) {

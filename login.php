@@ -1,6 +1,5 @@
 <?php
 require_once('login_action.php');
-session_set_cookie_params(0);
 session_start();
 
 if (isset($_COOKIE['id']) && isset($_COOKIE['key'])) {
@@ -12,7 +11,7 @@ if (isset($_COOKIE['id']) && isset($_COOKIE['key'])) {
     if (isset($result[0])) {
         $data = $result[0];
         if (hash('sha256', $data['email']) == $key) {
-            $_SESSION['email'] = $data['email'];
+            $_SESSION['email'] = htmlspecialchars($data['email']);
         }
     }
 }
