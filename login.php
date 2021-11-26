@@ -1,10 +1,11 @@
 <?php
 require_once('login_action.php');
 session_start();
-
+global $db;
 if (isset($_COOKIE['id']) && isset($_COOKIE['key'])) {
     $id = $_COOKIE['id'];
     $key = $_COOKIE['key'];
+    mysqli_real_escape_string($db, $id);
     $query = "SELECT * FROM user WHERE id = $id;";
     $result = query($query);
 
